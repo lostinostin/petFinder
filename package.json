@@ -1,28 +1,33 @@
 {
-    "name": "expressnodeapp",
-    "version": "1.0.0",
-    "description": "this is a sample that I made while taking the node and express course through pluralsight",
-    "main": "app.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node app.js"
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "ejs": "^2.5.1",
-        "express": "^4.14.0",
-        "express-handlebars": "^3.0.0",
-        "jade": "^1.11.0"
-    },
-    "devDependencies": {
-        "gulp": "^3.9.1",
-        "gulp-inject": "^4.1.0",
-        "gulp-jscs": "^2.0.0",
-        "gulp-jshint": "^2.0.1",
-        "gulp-nodemon": "^2.1.0",
-        "jshint": "^2.9.2",
-        "jshint-stylish": "^2.2.0",
-        "wiredep": "^4.0.0"
-    }
+  "name": "expressnodeapp",
+  "version": "1.0.0",
+  "description": "this is a sample that I made while taking the node and express course through pluralsight",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.5.1",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "jade": "^1.11.0",
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.13.2",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-inject": "^4.1.0",
+    "gulp-jscs": "^2.0.0",
+    "gulp-jshint": "^2.0.1",
+    "gulp-nodemon": "^2.1.0",
+    "gulp-react": "^3.1.0",
+    "jshint": "^2.9.2",
+    "jshint-stylish": "^2.2.0",
+    "wiredep": "^4.0.0"
+  }
 }

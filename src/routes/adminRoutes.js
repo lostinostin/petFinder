@@ -2,7 +2,7 @@ var express = require('express');
 var adminRouter = express.Router();
 
 var router = function(nav) {
-    adminRouter.route('/addBooks')
+    adminRouter.route('/addPets')
         .get(function(req, res) {
 
         });

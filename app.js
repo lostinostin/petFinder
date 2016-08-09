@@ -1,4 +1,5 @@
 var express = require('express');
+var request = require('request');
 var app = express();
 var port = process.env.PORT || 5000;
 var nav = [{
@@ -27,14 +28,11 @@ app.set('view engine', 'ejs');
 app.use('/Pets', petRouter);
 app.use('/Admin', adminRouter);
 
-app.get('/petFinder', function(req,res) {
-    http.get('http://api.petfinder.com/pet.getRandom?key=9b4604790e9c66428f6c9d46cbd08977&format=json&output=basic', function(data){
-        data.on("data", function(chunk) {
-            res.write(chunk);
-        });
-        data.on("end", function() {
-            res.end();
-        });
+app.get('/petFinder', function(req, res) {
+    var url = 'http://api.petfinder.com/pet.getRandom?key=9b4604790e9c66428f6c9d46cbd08977&format=json&output=basic';
+    request(url, function(err, response, body) {
+        // console.log(body);
+        // res.json(JSON.parse(body));
     });
 }); //this is a proxy to use api
 
@@ -51,4 +49,3 @@ app.get('/', function(req, res) {
 app.listen(port, function(err) {
     console.log('running on port ' + port);
 });
-
