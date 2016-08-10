@@ -2,6 +2,13 @@ var express = require('express');
 var request = require('request');
 var app = express();
 var port = process.env.PORT || 5000;
+var passport = require('passport');
+var flash = require('connect-flash');
+var morgan = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('bodyParser');
+var session = require('express-session');
+
 var nav = [{
     Link: '/Pets',
     Text: 'Pets'
@@ -27,6 +34,16 @@ app.set('view engine', 'ejs');
 // app.use('/Profile', profileRouter);
 app.use('/Pets', petRouter);
 app.use('/Admin', adminRouter);
+
+app.use(morgan('dev')); //log every request to the console
+app.use(cookieParser()); //read cookies for auth
+app.use(bodyParser()); //get info in html forms
+
+//passport requirements
+app.use(session({secret: '#'}));
+app.use(passport.initialize());
+app.use(passport.session()); //persistant login session
+app.use(flash()); //for flash messages during session
 
 app.get('/petFinder', function(req, res) {
     var url = 'http://api.petfinder.com/pet.getRandom?key=9b4604790e9c66428f6c9d46cbd08977&format=json&output=basic';
