@@ -1,17 +1,14 @@
 var express = require(express);
 var userRouter = express.Router();
-module.exports = function(app, passport){
+var passport = require('passport');
 
-	// app.get('/Login', function(req,res){
-	// 	//render page and pass in any flash data (if it exists)
-	// 	res.render('login.ejs', {message: req.flash('loginMessage')});
-	// });
-	userRouter.route('/Login')
-		.post(passport.authenticate('local-login'), {
+var router = function(userRouter, passport){
+	userRouter.post('/Login', passport.authenticate('local-login', {
 		successRedirect : '/profile', // redirect to the secure profile section
-        failureRedirect : '/login', // redirect back to the signup page if there is an error
-        failureFlash : true // allow flash messages
-	});
+	    failureRedirect : '/login', // redirect back to the signup page if there is an error
+	    failureFlash : true // allow flash messages
+	}));
+};
 
 	// app.get('/Signup', function(req,res){
 	// 	res.render('signup.ejs', {message: req.flash('signupMessage')});
@@ -34,16 +31,15 @@ module.exports = function(app, passport){
 	// 	req.logout();
 	// 	res.redirect('/');
 	// });
-}
 
 //middleware to see if user logged in
-function isLoggedIn(req, res){
-	if (req.isAuthenticated())
-		return next();
-	res.redirect('/');
-}
+// function isLoggedIn(req, res){
+// 	if (req.isAuthenticated())
+// 		return next();
+// 	res.redirect('/');
+// }
 
-module.exports = userRouter;
+module.exports = router;
 
 
 
