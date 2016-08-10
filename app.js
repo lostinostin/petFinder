@@ -38,8 +38,11 @@ app.set('views', './src/views');
 
 // change .hbs to jade, or ejs if you'd rather use jade or ejs and vice versa
 app.set('view engine', 'ejs');
+
 app.use('/Profile', userRouter);
+
 app.use('/Pets', petRouter);
+
 //app.use('/Admin', adminRouter);
 
 // app.get('/petFinder', function(req,res) {
@@ -70,7 +73,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session()); //persistant login session
 app.use(flash()); //for flash messages during session
-require('./src/routes/userRoutes.js')(app, passport);
 
 //whats this down here???
 app.get('/petFinder', function(req, res) {

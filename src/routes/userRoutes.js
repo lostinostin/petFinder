@@ -1,5 +1,7 @@
+var express = require(express);
+var userRouter = express.Router();
 module.exports = function(app, passport){
-	
+
 	// app.get('/Login', function(req,res){
 	// 	//render page and pass in any flash data (if it exists)
 	// 	res.render('login.ejs', {message: req.flash('loginMessage')});
