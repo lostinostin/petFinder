@@ -6,7 +6,7 @@ var passport = require('passport');
 var flash = require('connect-flash');
 var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('bodyParser');
+var bodyParser = require('body-parser');
 var session = require('express-session');
 
 var nav = [{
@@ -16,12 +16,10 @@ var nav = [{
     Link: '/Profile',
     Text: 'Profile'
 }];
-// var profileRouter = require('./src/routes/profileRoutes.js')(nav);
+
 var petRouter = require('./src/routes/petRoutes.js')(nav);
 var adminRouter = require('./src/routes/adminRoutes.js')(nav);
 
-// Handles the login
-//var loginRouter = require('./src/routes/loginRoutesj.js')(nav);
 app.use(express.static('public'));
 // app.use(express.static('src/views'));
 app.set('views', './src/views');
@@ -39,7 +37,6 @@ app.use('/Pets', petRouter);
 app.use('/Admin', adminRouter);
 //app.use('')
 
-
 app.get('/petFinder', function(req,res) {
 
     var emptyVar = '';
@@ -49,6 +46,8 @@ app.get('/petFinder', function(req,res) {
             emptyVar += chunk;
             console.log(chunk);
         });
+    });
+});
 
 app.use(morgan('dev')); //log every request to the console
 app.use(cookieParser()); //read cookies for auth
@@ -60,8 +59,11 @@ app.use(passport.initialize());
 app.use(passport.session()); //persistant login session
 app.use(flash()); //for flash messages during session
 
+//route requirements
+require('./src/routes/userRoutes.js')(app, passport);
+
 app.get('/petFinder', function(req, res) {
-    
+
     var emptyVar = '';
     http.get('http://api.petfinder.com/pet.getRandom?key=9b4604790e9c66428f6c9d46cbd08977&format=json&output=basic', function(data){
         data.setEncoding('utf8');
@@ -77,7 +79,7 @@ app.get('/petFinder', function(req, res) {
             res.send(json);
         });
     });
-}); //this is a proxy to use api
+    }); //this is a proxy to use api
 
 app.get('/', function(req, res) {
     res.render('index', {
