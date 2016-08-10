@@ -1,29 +1,29 @@
 module.exports = function(app, passport){
-	app.get('/login', function(req,res){
+	app.get('/Login', function(req,res){
 		//render page and pass in any flash data (if it exists)
 		res.render('login.ejs', {message: req.flash('loginMessage')});
 	});
 
-	app.post('/login', function(req,res){
+	app.post('/Login', function(req,res){
 		//all our passport stuff here
 	});
 
-	app.get('/signup', function(req,res){
+	app.get('/Signup', function(req,res){
 		res.render('signup.ejs', {message: req.flash('signupMessage')});
 	});
 
-	app.post('/signup', function(req,res){
+	app.post('/Signup', function(req,res){
 		//passport stuff
 	});
 
-	app.get('/profile', isLoggedIn, function(req,res){
+	app.get('/Profile', isLoggedIn, function(req,res){
 		res.render('profile.ejs',{
 			user: req.user
 		});
 	});
 
 	//logout
-	app.get('/logout', function(req,res){
+	app.get('/Logout', function(req,res){
 		req.logout();
 		res.redirect('/');
 	});
