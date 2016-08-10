@@ -50,7 +50,6 @@ app.get('/petFinder', function(req,res) {
             console.log(chunk);
         });
 
-<<<<<<< HEAD
 app.use(morgan('dev')); //log every request to the console
 app.use(cookieParser()); //read cookies for auth
 app.use(bodyParser()); //get info in html forms
