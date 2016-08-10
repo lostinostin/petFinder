@@ -26,6 +26,9 @@
     "passport-google-oauth": "^1.0.0",
     "passport-local": "^1.0.0",
     "passport-twitter": "^1.0.4",
+    "mysql": "^2.11.1",
+    "sequelize": "^3.23.6",
+    "sequelize-cli": "^2.4.0",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
     "request": "^2.74.0"
