@@ -6,10 +6,14 @@ module.exports = function(sequelize, DataTypes) {
     name: DataTypes.STRING,
     description: DataTypes.TEXT,
     img_url: DataTypes.STRING
+    primaryKey: true,
+    allowNull: false,
+    autoIncrement: true,
+    unique: true
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+
       }
     }
   });
