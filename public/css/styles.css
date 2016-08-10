@@ -21,17 +21,23 @@ h3,
     font-family: 'Oswald', arial narrow, sans-serif;
 }
 
-footer {
+#footer {
     margin-top: 40px;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    background-color: #cecece;
+    margin-bottom: 40px;
 }
 
 .card {
     border: 1px solid #ccc;
     border-radius: 1%;
     margin: 20px;
+}
+
+.card-text {
+    margin: 20px;
+}
+
+.card-link {
+    margin: 10px;
 }
 
 .card-img-top {
@@ -41,7 +47,13 @@ footer {
 #masthead {
     min-height: 199px;
     background-color: #000044;
+    background-image: url('http://cdn.adcouncil.org/var/ezflow_site/storage/images/adcouncil/our-campaigns/family-community/shelter-pet-adoption/14242-28-eng-US/Shelter-Pet-Adoption.jpg');
     color: #aaaacc;
+    height: 50em;
+}
+
+.fullPage {
+    height: 100%;
 }
 
 #masthead h1 {
@@ -51,10 +63,14 @@ footer {
     margin-top: 50px;
 }
 
+.titlE {
+    text-shadow: 1px 1px 5px #ccc;
+}
+
 #masthead .well {
     margin-top: 31px;
-    background-color: #111166;
-    border-color: #000022;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 2px 1px 10px #223344;
     color: #efefff;
     min-height: 127px;
 }
@@ -63,6 +79,10 @@ footer {
     padding-top: 0px;
     padding-left: 22px;
     padding-right: 22px;
+}
+
+.panel-body {
+    height: 500px;
 }
 
 #topPanel .panel-body {

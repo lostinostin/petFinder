@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <title><%= title %></title>
+    <title>Pets</title>
     <meta name="generator" content="Bootply" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!--bower:css-->
@@ -16,14 +16,17 @@
     <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
     <!--endbower-->
     <!--inject:css-->
+    <link rel="stylesheet" href="/css/jTinder.css">
     <link rel="stylesheet" href="/css/styles.css">
     <!--endInject-->
     <!--inject:js-->
-    <script src="/js/app.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/jquery.jTinder.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.transform2d.js"></script>
+    <script src="/js/main.js"></script>
     <!--endInject-->
-    <!--[if lt IE 9]>
-			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
+
 </head>
 
 <body>
@@ -40,9 +43,13 @@
             </div>
             <nav class="collapse navbar-collapse" role="navigation">
                 <ul class="nav navbar-nav">
-        <% for (var i=0; i < nav.length; i++){%>
-        <li><a href='<%=nav[i].Link%>'><%=nav[i].Text%></a></li>
-        <%}%>
+                    <% for (var i=0; i < nav.length; i++){%>
+                        <li>
+                            <a href='<%=nav[i].Link%>'>
+                                <%=nav[i].Text%>
+                            </a>
+                        </li>
+                        <%}%>
                 </ul>
                 <ul class="nav navbar-right navbar-nav">
                     <li class="dropdown">
@@ -58,121 +65,117 @@
         </div>
     </header>
 
-    <div id="masthead">
-        <div class="container">
+
+    <div id="masthead" class="img-responsive">
+        <div class="container fullPage">
             <div class="row">
                 <div class="col-md-7">
-                    <h1><%= title %>
+                    <h1 class="titlE"><%= title %>
           <p class="lead"></p>
         </h1>
                 </div>
-                <div class="col-md-5">
-                    <div class="well well-lg">
+                <div class="col-sm-5">
+                    <div class="">
                         <div class="row">
-                            <div class="col-sm-12">
+                            <br>
+                            <div class="col-md-12 col-sm-4 text-center">
 
+
+                                <div class="wrap">
+                                    <!-- start jtinder container -->
+                                    <div id="tinderslide">
+                                        <ul>
+                                            <% for (var i=0; i < pets.length; i++){%>
+                                                <li class="pane<%= i %>">
+                                                    <div class="card">
+                                                        <img class="card-img-top" src="<%=pets[i].img%>" alt="Card image cap">
+                                                        <div class="card-block">
+                                                            <h4 class="card-title"><%=pets[i].name%></h4>
+                                                            <p class="card-text">
+                                                                <%=pets[i].description%>
+                                                                    <a href="/pets/<%=pets[i]%>" class="text-muted">Read More</a>
+                                                            </p>
+                                                        </div>
+                                                        <div class="card-block">
+                                                            <div class="like"></div>
+                                                            <div class="dislike"></div>
+                                                            <a href="#" class="card-link btn btn-primary">More Info</a>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <!--
+                                                    <div class="img"></div>
+                                                    <div>
+                                                        <%=pets[i].name%>
+                                                         </div>
+                                                    <div class="like"></div>
+                                                    <div class="dislike"></div>-->
+                                                </li>
+                                                <%}%>
+                                        </ul>
+                                    </div>
+                                    <div class="actions">
+                                        <a href="#" class="dislike"><i></i></a>
+                                        <a href="#" class="like"><i></i></a>
+                                    </div>
+                                    <!-- end jtinder container -->
+                                </div>
+                                <!-- end padding container -->
+
+                                <!-- jTinder trigger by buttons  -->
+                                <!--<div class="actions">
+                                    <a href="#" class="dislike"><i></i></a>
+                                    <a href="#" class="like"><i></i></a>
+                                </div>-->
 
                             </div>
+
+                            <!-- jTinder status text  -->
+                            <div id="status"></div>
+
+
                         </div>
+                        <br><br>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- /cont -->
-
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="top-spacer"> </div>
-                </div>
-            </div>
-        </div>
-        <!-- /cont -->
-
     </div>
-
-
+    </div>
+    </div>
+    </div>
+    </div>
     <div class="container">
-        <div class="row">
-
-            <div class="col-md-12">
-
-                <div class="panel">
-                    <div class="panel-body">
 
 
-
-                        <!--/stories-->
-                        <% for (var i=0; i < pets.length; i++){%>
-<div class="card center col-md-3">
-  <img class="card-img-top img-responsive" src="http://placehold.it/350x150" alt="Card image cap">
-  <div class="card-block">
-    <h4 class="card-title"><%= pets[i].name %></h4>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item ">Age: <%= pets[i].age %></li>
-    <li class="list-group-item ">Dapibus ac facilisis in</li>
-    <li class="list-group-item ">Vestibulum at eros</li>
-  </ul>
-  <div class="card-block">
-    <a href="/pets/<%= i %>" class="card-link btn btn-primary">More Info</a>
-    <a href="#" class="card-link btn btn-primary">Another link</a>
-  </div>
-</div><%}%>
+        <hr>
+        <!-- start padding container -->
 
 
-                    </div>
-                </div>
-
-
-
-            </div>
-            <!--/col-12-->
-        </div>
-    </div>
-
-
-    <hr>
-
-    <div class="container" id="footer">
-        <div class="row">
-            <div class="col col-sm-12">
-
-                <h1>Follow Us</h1>
-                <div class="btn-group">
-                    <a class="btn btn-twitter btn-lg" href="#"><i class="icon-twitter icon-large"></i> Twitter</a>
-                    <a class="btn btn-facebook btn-lg" href="#"><i class="icon-facebook icon-large"></i> Facebook</a>
-                    <a class="btn btn-google-plus btn-lg" href="#"><i class="icon-google-plus icon-large"></i> Google+</a>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <hr>
-
-    <hr>
-
-    <footer>
-        <div class="container">
+        <div class="container" id="footer">
             <div class="row">
-                <div class="col-sm-6">
-                    <ul class="list-inline">
-                        <li><i class="icon-facebook icon-2x"></i></li>
-                        <li><i class="icon-twitter icon-2x"></i></li>
-                        <li><i class="icon-google-plus icon-2x"></i></li>
-                        <li><i class="icon-pinterest icon-2x"></i></li>
-                    </ul>
+                <div class="col col-sm-12">
 
-                </div>
-                <div class="col-sm-6">
-                    <p class="pull-right">Built with <i class="icon-heart-empty"></i> at <a href="http://www.bootply.com">Bootply</a></p>
+                    <h1>Follow Us</h1>
+                    <div class="btn-group">
+                        <a class="btn btn-twitter btn-lg" href="#"><i class="icon-twitter icon-large"></i> Twitter</a>
+                        <a class="btn btn-facebook btn-lg" href="#"><i class="icon-facebook icon-large"></i> Facebook</a>
+                        <a class="btn btn-google-plus btn-lg" href="#"><i class="icon-google-plus icon-large"></i> Google+</a>
+                    </div>
+
                 </div>
             </div>
         </div>
-    </footer>
 
+        <!-- jQuery lib -->
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <!-- transform2d lib -->
+        <script type="text/javascript" src="js/jquery.transform2d.js"></script>
+        <!-- jTinder lib -->
+        <script type="text/javascript" src="js/jquery.jTinder.js"></script>
+        <!-- jTinder initialization script -->
+        <script type="text/javascript" src="js/main.js"></script>
 </body>
 
 </html>

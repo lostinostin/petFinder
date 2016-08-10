@@ -46,7 +46,7 @@ app.get('/petFinder', function(req,res) {
             var json = JSON.parse(emptyVar);
             // debugger;
             console.log(json);
-            res.end();
+            res.send(json);
         });
     });
 }); //this is a proxy to use api
@@ -64,4 +64,3 @@ app.get('/', function(req, res) {
 app.listen(port, function(err) {
     console.log('running on port ' + port);
 });
-

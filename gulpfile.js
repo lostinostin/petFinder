@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var jscs = require('gulp-jscs');
 var nodemon = require('gulp-nodemon');
+var babel = require('gulp-babel');
 
 var jsFiles = ['*.js', 'src/**/*.js'];
 
@@ -29,7 +30,7 @@ gulp.task('inject', function() {
         directory: './public/lib',
         ignorePath: '../../public'
     };
-    return gulp.src('./src/views/*.jade')
+    return gulp.src('./src/views/*.ejs')
         .pipe(wiredep(wiredepOptions))
         .pipe(inject(injectSrc, injectOptions))
         .pipe(gulp.dest('./src/views'));
