@@ -8,11 +8,13 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      user_id: {
-        type: Sequelize.INTEGER
+      userId: {
+        type: Sequelize.INTEGER, 
+        references: {model: 'users', key: 'id'}
       },
-      pet_id: {
-        type: Sequelize.INTEGER
+      petId: {
+        type: Sequelize.INTEGER,
+        references: {model: 'pets', key: 'id'}
       },
       swipe_direction: {
         type: Sequelize.BOOLEAN

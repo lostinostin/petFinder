@@ -21,24 +21,6 @@ var petRouter = require('./src/routes/petRoutes.js')(nav);
 var adminRouter = require('./src/routes/adminRoutes.js')(nav);
 
 
-// begin -------------------------------------------------------------------------------------
-
-app.use(bodyParser());
-app.use(require('connect-multiparty')());
-app.use(cookieParser());
-app.use(session({ secret: 'super-secret' }));
-
-app.use(passport.initialize());
-app.use(passport.session());
-
-passport.use(User.createStrategy());
-
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
-
-// end -------------------------------------------------------------------------------------
-
-
 app.use(express.static('public'));
 // app.use(express.static('src/views'));
 app.set('views', './src/views');

@@ -11,6 +11,7 @@ module.exports = function(sequelize, DataTypes) {
         // associations are defined here
         m.users.hasMany(m.pets, {through: 'usersPets'});
         m.pets.hasMany(m.users, {through: 'usersPets'});
+        
       }
     }
   });
