@@ -1,17 +1,15 @@
-//all the tools we need
+//things we need
 var express = require('express');
 var http = require('http');
-var app = express();
 var port = process.env.PORT || 5000;
 var passport = require('passport');
 var flash = require('connect-flash');
-
 var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
-var userDB = require('./config/userDatabase.js');
+var app = express();
 
 //navbar
 var nav = [{
@@ -57,16 +55,22 @@ app.use('/Pets', petRouter);
 // });
 
 //Passport things
+require('./config/passport')(passport);
 app.use(morgan('dev')); //log every request to the console
 app.use(cookieParser()); //read cookies for auth
-app.use(bodyParser()); //get info in html forms
-
-app.use(session({secret: '#'}));
+app.use(bodyParser.urlencoded({
+    extended: false
+})); //get info in html forms
+app.use(methodOverride('_method'));
+app.use(session({
+    resave: false,
+    saveUninitialized: true,
+    secret: '123'
+}));
 app.use(passport.initialize());
 app.use(passport.session()); //persistant login session
 app.use(flash()); //for flash messages during session
-
-require('./src/routes/userRoutes.js')(app, passport);
+require('./src/userRoutes.js')(app, passport);
 
 //whats this down here???
 app.get('/petFinder', function(req, res) {
@@ -95,11 +99,6 @@ app.get('/', function(req, res) {
         nav: nav
     });
 });
-
-//what is this ???
-// app.get('/Pets', function(req, res) {
-//     res.send('hello Pets');
-// });
 
 app.listen(port, function(err) {
     console.log('Magic happening on ' + port);

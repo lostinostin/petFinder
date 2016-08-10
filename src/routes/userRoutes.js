@@ -1,20 +1,25 @@
 module.exports = function(app, passport){
-	app.get('/Login', function(req,res){
-		//render page and pass in any flash data (if it exists)
-		res.render('login.ejs', {message: req.flash('loginMessage')});
-	});
+	
+	// app.get('/Login', function(req,res){
+	// 	//render page and pass in any flash data (if it exists)
+	// 	res.render('login.ejs', {message: req.flash('loginMessage')});
+	// });
 
-	app.post('/Login', function(req,res){
-		//all our passport stuff here
-	});
+	app.post('/Login', passport.authenticate('local-login', {
+        successRedirect : '/profile', // redirect to the secure profile section
+        failureRedirect : '/login', // redirect back to the signup page if there is an error
+        failureFlash : true // allow flash messages
+    }));
 
-	app.get('/Signup', function(req,res){
-		res.render('signup.ejs', {message: req.flash('signupMessage')});
-	});
+	// app.get('/Signup', function(req,res){
+	// 	res.render('signup.ejs', {message: req.flash('signupMessage')});
+	// });
 
-	app.post('/Signup', function(req,res){
-		//passport stuff
-	});
+	app.post('/Signup', passport.authenticate('local-signup', {
+		sucessRedirect: '/Profile',
+		failureRedirect: '/Signup',
+		failureFlash: true //allows for flash msg
+	}));
 
 	app.get('/Profile', isLoggedIn, function(req,res){
 		res.render('profile.ejs',{
