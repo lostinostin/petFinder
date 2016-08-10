@@ -70,7 +70,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session()); //persistant login session
 app.use(flash()); //for flash messages during session
-require('./src/userRoutes.js')(app, passport);
+require('./src/routes/userRoutes.js')(app, passport);
 
 //whats this down here???
 app.get('/petFinder', function(req, res) {
