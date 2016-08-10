@@ -43,6 +43,8 @@ function isLoggedIn(req, res){
 	res.redirect('/');
 }
 
+module.exports = userRouter;
+
 
 
 
