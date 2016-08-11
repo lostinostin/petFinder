@@ -37,6 +37,35 @@ function isLoggedIn(req, res){
 	res.redirect('/');
 }
 
+	// app.get('/Signup', function(req,res){
+	// 	res.render('signup.ejs', {message: req.flash('signupMessage')});
+	// });
+
+	// app.post('/Signup', passport.authenticate('local-signup', {
+	// 	sucessRedirect: '/Profile',
+	// 	failureRedirect: '/Signup',
+	// 	failureFlash: true //allows for flash msg
+	// }));
+
+	// app.get('/Profile', isLoggedIn, function(req,res){
+	// 	res.render('profile.ejs',{
+	// 		user: req.user
+	// 	});
+	// });
+
+	// //logout
+	// app.get('/Logout', function(req,res){
+	// 	req.logout();
+	// 	res.redirect('/');
+	// });
+
+//middleware to see if user logged in
+// function isLoggedIn(req, res){
+// 	if (req.isAuthenticated())
+// 		return next();
+// 	res.redirect('/');
+// }
+
 module.exports = userRouter;
 
 

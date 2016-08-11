@@ -1,7 +1,11 @@
 //things we need
 var express = require('express');
 var http = require('http');
+<<<<<<< HEAD
 var port = process.env.PORT || 5000;
+=======
+var port = process.env.PORT || 2000;
+>>>>>>> be87e716e95a150873a1f933f9f40fc43761df72
 var passport = require('passport');
 var flash = require('connect-flash');
 var morgan = require('morgan');
@@ -23,6 +27,7 @@ var nav = [{
 
 //Routes
 var petRouter = require('./src/routes/petRoutes.js')(nav);
+var profileRouter = require('./src/routes/profileRoutes.js')(nav);
 //var adminRouter = require('./src/routes/adminRoutes.js')(nav); stretch goal
 var userRouter = require('./src/routes/userRoutes.js');
 
@@ -39,7 +44,8 @@ app.set('views', './src/views');
 
 // change .hbs to jade, or ejs if you'd rather use jade or ejs and vice versa
 app.set('view engine', 'ejs');
-app.use('/Profile', userRouter);
+// app.use('/Profile', userRouter);
+app.use('/Profile', profileRouter);
 app.use('/Pets', petRouter);
 
 //app.use('/Admin', adminRouter);
@@ -77,7 +83,11 @@ app.use(flash()); //for flash messages during session
 app.get('/petFinder', function(req, res) {
 
     var emptyVar = '';
+<<<<<<< HEAD
     http.get('http://api.petfinder.com/pet.getRandom?key=9b4604790e9c66428f6c9d46cbd08977&format=json&output=basic', function(data){
+=======
+    http.get('http://api.petfinder.com/pet.getRandom?key=9b4604790e9c66428f6c9d46cbd08977&format=json&output=basic', function(data) {
+>>>>>>> be87e716e95a150873a1f933f9f40fc43761df72
         data.setEncoding('utf8');
         data.on("data", function(chunk) {
             emptyVar += chunk;
@@ -103,4 +113,8 @@ app.get('/', function(req, res) {
 
 app.listen(port, function(err) {
     console.log('Magic happening on ' + port);
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> be87e716e95a150873a1f933f9f40fc43761df72
