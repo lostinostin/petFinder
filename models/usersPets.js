@@ -7,10 +7,10 @@ module.exports = function(sequelize, DataTypes) {
     swipe_direction: DataTypes.BOOLEAN
   }, {
     classMethods: {
-      associate: function(models) {
+      associate: function(m) {
         // associations are defined here
-        m.users.hasMany(m.pets, {through: 'usersPets'});
-        m.pets.hasMany(m.users, {through: 'usersPets'});
+        m.users.belongsToMany(m.pets, {through: 'usersPets'});
+        m.pets.belongsToMany(m.users, {through: 'usersPets'});
         
       }
     }
