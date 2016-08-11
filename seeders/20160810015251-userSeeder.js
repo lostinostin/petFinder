@@ -18,11 +18,9 @@ module.exports = {
             // debugger;
             console.log(json);
 
-
-
         });
     });
-    }); //this is a proxy to use api
+    });
 
 
 
