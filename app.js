@@ -5,6 +5,7 @@ var port = process.env.PORT || 5000;
 var passport = require('passport');
 var flash = require('connect-flash');
 var morgan = require('morgan');
+var methodOverride = require('method-override');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');

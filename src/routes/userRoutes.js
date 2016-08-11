@@ -1,14 +1,12 @@
-var express = require(express);
+var express = require('express');
 var userRouter = express.Router();
 var passport = require('passport');
 
-var router = function(userRouter, passport){
-	userRouter.post('/Login', passport.authenticate('local-login', {
-		successRedirect : '/profile', // redirect to the secure profile section
-	    failureRedirect : '/login', // redirect back to the signup page if there is an error
-	    failureFlash : true // allow flash messages
-	}));
-};
+userRouter.post('/Login', passport.authenticate('local-login', {
+	successRedirect : '/profile', // redirect to the secure profile section
+    failureRedirect : '/login', // redirect back to the signup page if there is an error
+    failureFlash : true // allow flash messages
+}));
 
 	// app.get('/Signup', function(req,res){
 	// 	res.render('signup.ejs', {message: req.flash('signupMessage')});
@@ -39,7 +37,7 @@ var router = function(userRouter, passport){
 // 	res.redirect('/');
 // }
 
-module.exports = router;
+module.exports = userRouter;
 
 
 
