@@ -1,11 +1,7 @@
 //things we need
 var express = require('express');
 var http = require('http');
-<<<<<<< HEAD
 var port = process.env.PORT || 5000;
-=======
-var port = process.env.PORT || 2000;
->>>>>>> be87e716e95a150873a1f933f9f40fc43761df72
 var passport = require('passport');
 var flash = require('connect-flash');
 var morgan = require('morgan');
