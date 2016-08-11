@@ -8,34 +8,34 @@ userRouter.post('/Login', passport.authenticate('local-login', {
     failureFlash : true // allow flash messages
 }));
 
-	// app.get('/Signup', function(req,res){
-	// 	res.render('signup.ejs', {message: req.flash('signupMessage')});
-	// });
+// userRouter.get('/Signup', function(req,res){
+// 	res.render('signup.ejs', {message: req.flash('signupMessage')});
+// });
 
-	// app.post('/Signup', passport.authenticate('local-signup', {
-	// 	sucessRedirect: '/Profile',
-	// 	failureRedirect: '/Signup',
-	// 	failureFlash: true //allows for flash msg
-	// }));
+userRouter.post('/Signup', passport.authenticate('local-signup', {
+	sucessRedirect: '/profile',
+	failureRedirect: '/Signup',
+	failureFlash: true //allows for flash msg
+}));
 
-	// app.get('/Profile', isLoggedIn, function(req,res){
-	// 	res.render('profile.ejs',{
-	// 		user: req.user
-	// 	});
-	// });
+userRouter.get('/Profile', isLoggedIn, function(req,res){
+	res.render('profile.ejs',{
+		user: req.user
+	});
+});
 
-	// //logout
-	// app.get('/Logout', function(req,res){
-	// 	req.logout();
-	// 	res.redirect('/');
-	// });
+//logout
+userRouter.get('/Logout', function(req,res){
+	req.logout();
+	res.redirect('/');
+});
 
 //middleware to see if user logged in
-// function isLoggedIn(req, res){
-// 	if (req.isAuthenticated())
-// 		return next();
-// 	res.redirect('/');
-// }
+function isLoggedIn(req, res){
+	if (req.isAuthenticated())
+		return next();
+	res.redirect('/');
+}
 
 module.exports = userRouter;
 
