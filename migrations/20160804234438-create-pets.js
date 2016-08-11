@@ -1,3 +1,5 @@
+//need to create many to many relationship with the migrations files
+
 'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {

@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": null,
-    "database": "database_test",
+    "password": "",
+    "database": "pets_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
@@ -14,10 +14,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "dfvcnjhsiwrz4407",
-    "password": "h0hunr7byzkhwmo5",
-    "database": "ol2uchiii0af8ush",
-    "host": "gx97kbnhgjzh3efb.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "username": "yh5et5kh2a5e8344",
+    "password": "vglez2deb9jhnb5e",
+    "database": "hnarnf0bax5jv638",
+    "host": "q3vtafztappqbpzn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   }
 }

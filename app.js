@@ -1,6 +1,12 @@
 //things we need
 var express = require('express');
 var http = require('http');
+var passport = require('passport');
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+var User = require('./models/user');
+var app = express();
 var port = process.env.PORT || 5000;
 var passport = require('passport');
 var flash = require('connect-flash');
@@ -79,11 +85,7 @@ app.use(flash()); //for flash messages during session
 app.get('/petFinder', function(req, res) {
 
     var emptyVar = '';
-<<<<<<< HEAD
     http.get('http://api.petfinder.com/pet.getRandom?key=9b4604790e9c66428f6c9d46cbd08977&format=json&output=basic', function(data){
-=======
-    http.get('http://api.petfinder.com/pet.getRandom?key=9b4604790e9c66428f6c9d46cbd08977&format=json&output=basic', function(data) {
->>>>>>> be87e716e95a150873a1f933f9f40fc43761df72
         data.setEncoding('utf8');
         data.on("data", function(chunk) {
             emptyVar += chunk;
@@ -109,8 +111,5 @@ app.get('/', function(req, res) {
 
 app.listen(port, function(err) {
     console.log('Magic happening on ' + port);
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> be87e716e95a150873a1f933f9f40fc43761df72
+
