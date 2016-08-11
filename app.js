@@ -24,7 +24,7 @@ var nav = [{
 //Routes
 var petRouter = require('./src/routes/petRoutes.js')(nav);
 //var adminRouter = require('./src/routes/adminRoutes.js')(nav); stretch goal
-var userRouter = require('./src/routes/userRoutes.js')(nav);
+var userRouter = require('./src/routes/userRoutes.js');
 
 //Allow styles
 app.use(express.static('public'));
