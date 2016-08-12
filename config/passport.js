@@ -21,7 +21,6 @@ module.exports = function(passport){
 		passReqToCallback: true
 		},
 		function(req,email,password,done){
-			console.log("Hey: ", email)
 			process.nextTick(function(){
 				
 				models.User.findOne({where:{'email': email}}).then(function(user){
@@ -66,6 +65,8 @@ module.exports = function(passport){
 
 	            	// all is well, return successful user
 	            	return done(null, user);
+	        	}).catch(function(err){
+	        		if (err) return done(err);
 	        	});
         	});
 	        
