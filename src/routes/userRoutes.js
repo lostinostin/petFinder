@@ -1,33 +1,34 @@
-module.exports = function(app, passport){
-	app.get('/login', function(req,res){
-		//render page and pass in any flash data (if it exists)
-		res.render('login.ejs', {message: req.flash('loginMessage')});
-	});
+var express = require('express');
+var userRouter = express.Router();
+var passport = require('passport');
 
-	app.post('/login', function(req,res){
-		//all our passport stuff here
-	});
+userRouter.post('/Login', passport.authenticate('local-login', {
+	successRedirect : '/profile', // redirect to the secure profile section
+    failureRedirect : '/login', // redirect back to the signup page if there is an error
+    failureFlash : true // allow flash messages
+}));
 
-	app.get('/signup', function(req,res){
-		res.render('signup.ejs', {message: req.flash('signupMessage')});
-	});
+// userRouter.get('/Signup', function(req,res){
+// 	res.render('signup.ejs', {message: req.flash('signupMessage')});
+// });
 
-	app.post('/signup', function(req,res){
-		//passport stuff
-	});
+userRouter.post('/Signup', passport.authenticate('local-signup', {
+	sucessRedirect: '/profile',
+	failureRedirect: '/Signup',
+	failureFlash: true //allows for flash msg
+}));
 
-	app.get('/profile', isLoggedIn, function(req,res){
-		res.render('profile.ejs',{
-			user: req.user
-		});
+userRouter.get('/Profile', isLoggedIn, function(req,res){
+	res.render('profile.ejs',{
+		user: req.user
 	});
+});
 
-	//logout
-	app.get('/logout', function(req,res){
-		req.logout();
-		res.redirect('/');
-	});
-}
+//logout
+userRouter.get('/Logout', function(req,res){
+	req.logout();
+	res.redirect('/');
+});
 
 //middleware to see if user logged in
 function isLoggedIn(req, res){
@@ -35,6 +36,37 @@ function isLoggedIn(req, res){
 		return next();
 	res.redirect('/');
 }
+
+	// app.get('/Signup', function(req,res){
+	// 	res.render('signup.ejs', {message: req.flash('signupMessage')});
+	// });
+
+	// app.post('/Signup', passport.authenticate('local-signup', {
+	// 	sucessRedirect: '/Profile',
+	// 	failureRedirect: '/Signup',
+	// 	failureFlash: true //allows for flash msg
+	// }));
+
+	// app.get('/Profile', isLoggedIn, function(req,res){
+	// 	res.render('profile.ejs',{
+	// 		user: req.user
+	// 	});
+	// });
+
+	// //logout
+	// app.get('/Logout', function(req,res){
+	// 	req.logout();
+	// 	res.redirect('/');
+	// });
+
+//middleware to see if user logged in
+// function isLoggedIn(req, res){
+// 	if (req.isAuthenticated())
+// 		return next();
+// 	res.redirect('/');
+// }
+
+module.exports = userRouter;
 
 
 
