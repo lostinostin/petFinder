@@ -46,7 +46,7 @@ var nav = [{
 var petRouter = require('./src/routes/petRoutes.js')(nav);
 var profileRouter = require('./src/routes/profileRoutes.js')(nav);
 //var adminRouter = require('./src/routes/adminRoutes.js')(nav); stretch goal
-require('./src/routes/userRoutes.js')(app, passport);
+var userRouter = require('./src/routes/userRoutes.js')(app, passport);
 
 //Allow styles
 app.use(express.static('public'));
@@ -63,7 +63,10 @@ app.set('views', './src/views');
 app.set('view engine', 'ejs');
 app.use('/Profile', profileRouter);
 app.use('/Pets', petRouter);
-
+app.use('/Login', userRouter);
+app.use('/signup', userRouter);
+app.use('/Profile', userRouter);
+app.use('/Logout', userRouter);
 //app.use('/Admin', adminRouter);
 
 // app.get('/petFinder', function(req,res) {

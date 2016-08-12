@@ -49,7 +49,6 @@ module.exports = {
                       type: parsedJson.petfinder.pets.pet[i].animal.$t,
                       breed: parsedJson.petfinder.pets.pet[i].breeds.breed.$t,
                       description: parsedJson.petfinder.pets.pet[i].description.$t,
-                      //img_url: parsedJson.petfinder.pets.pet[i].media.photos.photo[2].$t,
                       createdAt: new Date(),
                       updatedAt: new Date()
                       
