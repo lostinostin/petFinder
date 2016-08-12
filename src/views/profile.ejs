@@ -73,7 +73,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-7">
-                    <h1><%= title %>
+                    <h1 class="titlE"><%= title %>
           <p class="lead"></p>
         </h1>
                 </div>
@@ -81,8 +81,11 @@
                     <div class="well well-lg">
                         <div class="row">
                             <div class="col-sm-12">
-                                <div class="col-md-3">
-                                    <h3>Name</h3>
+                                <div class="col-md-6">
+                                    <h3>Name: <h6>A name</h6></h3>
+                                </div>
+                                <div class="col-md-6">
+                                    <h3>Description: <h6>A Description</h6></h3>
                                 </div>
 
                             </div>
@@ -93,7 +96,34 @@
         </div>
 
     </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h3>List of your matches:</h3>
+            <% for (var i=0; i < 4; i++){%>
+                <div class="col-md-3">
 
+                    <div class="card">
+                        <img class="card-img-top img-responsive" src="http://placehold.it/500x200" alt="Card image cap">
+                        <div class="card-block">
+                            <h4 class="card-title">Dog Name</h4>
+                            <p class="card-text">
+                                Description
+                                <!--<a href="/pets/" class="text-muted">Read More</a>-->
+                            </p>
+                        </div>
+                        <div class="card-block">
+                            <div class="like"></div>
+                            <div class="dislike"></div>
+                            <a href="#" class="card-link btn btn-primary">More Info</a>
+
+                        </div>
+                    </div>
+
+                </div>
+                <%}%> 
+                Want more matches? <br><button type="submit" class="btn btn-primary ">Clear Current Matches</button>
+        </div>
+    </div>
 
 
     <hr>
