@@ -48,6 +48,8 @@ h3,
     min-height: 199px;
     background-color: #000044;
     background-image: url('http://cdn.adcouncil.org/var/ezflow_site/storage/images/adcouncil/our-campaigns/family-community/shelter-pet-adoption/14242-28-eng-US/Shelter-Pet-Adoption.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
     color: #aaaacc;
     height: 50em;
 }
@@ -71,7 +73,7 @@ h3,
     margin-top: 31px;
     background-color: rgba(255, 255, 255, 0.8);
     box-shadow: 2px 1px 10px #223344;
-    color: #efefff;
+    color: #000;
     min-height: 127px;
 }
 
