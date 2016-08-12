@@ -46,7 +46,7 @@ var nav = [{
 var petRouter = require('./src/routes/petRoutes.js')(nav);
 var profileRouter = require('./src/routes/profileRoutes.js')(nav);
 //var adminRouter = require('./src/routes/adminRoutes.js')(nav); stretch goal
-require('./src/routes/userRoutes.js')(app, passport);
+require('./src/routes/userRoutes.js')(app, passport, nav);
 
 //Allow styles
 app.use(express.static('public'));
