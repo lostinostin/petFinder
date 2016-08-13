@@ -5,14 +5,26 @@
     $(function() {
         $('#tinderslide').jTinder({
             // dislike callback
-            onDislike: function(item) {
+            onDislike: function(item, err) {
                 // set the status text
+                if (err) throw err;
                 $('#status').html('Not Interested');
+                $.post('/decision',
+                {
+                    swipe_direction: 0,
+                    petId: $("#petId").val()
+                });
             },
             // like callback
-            onLike: function(item) {
+            onLike: function(item, err) {
                 // set the status text
+                if (err) throw err;
                 $('#status').html('Interested');
+                $.post('/decision',
+                {
+                    swipe_direction: 1,
+                    petId: $("#petId").val()
+                });
             },
             animationRevertSpeed: 200,
             animationSpeed: 400,

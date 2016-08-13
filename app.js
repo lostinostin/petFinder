@@ -14,9 +14,9 @@ var methodOverride = require('method-override');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+// var configure = process.env.NODE_ENV;
 
 var app = express();
-
 app.use(cookieParser()); //read cookies for auth
 app.use(bodyParser.urlencoded({
     extended: false
@@ -32,6 +32,8 @@ app.use(passport.initialize());
 app.use(passport.session());
  //persistant login session
 app.use(flash());
+
+
 require('./config/passport')(passport);
 //navbar
 var nav = [{

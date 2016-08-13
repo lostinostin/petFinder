@@ -88,13 +88,15 @@
                                             <% for (var i=0; i < pets.length; i++){%>
                                                 <li class="pane<%= i %>">
                                                     <div class="card">
-                                                        <img class="card-img-top" src="<%=pets[i].img%>" alt="Card image cap">
+                                                        <img class="card-img-top" src="<%=pets[i].img_url%>" alt="Card image cap">
                                                         <div class="card-block">
                                                             <h4 class="card-title"><%=pets[i].name%></h4>
                                                             <p class="card-text">
                                                                 <%=pets[i].description%>
                                                                     <a href="/pets/<%=pets[i]%>" class="text-muted">Read More</a>
                                                             </p>
+                                                            <input type="hidden" id="petId" value="<%=pets[i].id%>"/>
+
                                                         </div>
                                                         <div class="card-block">
                                                             <div class="like"></div>

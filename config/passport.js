@@ -9,7 +9,7 @@ module.exports = function(passport){
 	});
 	//deserialize
 	passport.deserializeUser(function(id,done){
-		User.findOne({where:{id: user.id}}, function(err,user){
+		models.User.findOne({where:{id: id}}, function(err,user){
 			done(err,user);
 		});
 	});

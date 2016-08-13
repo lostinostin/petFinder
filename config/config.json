@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "lisamwatkins",
-    "password": "root",
-    "database": "pets_db",
+    "username": "root",
+    "password": "x007sa#9ketiSh0MFbG$idgaf",
+    "database": "pf_database",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
