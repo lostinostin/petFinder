@@ -1,41 +1,46 @@
 var express = require('express');
 var userRouter = express.Router();
-var passport = require('passport');
 
-userRouter.post('/Login', passport.authenticate('local-login', {
-	successRedirect : '/profile', // redirect to the secure profile section
-    failureRedirect : '/login', // redirect back to the signup page if there is an error
-    failureFlash : true // allow flash messages
-}));
+module.exports = function(app, passport){
+	console.log("im now set")
+	app.post('/Login', passport.authenticate('local-login', {
+		successRedirect : '/profile', // redirect to the secure profile section
+	    failureRedirect : '/login', // redirect back to the signup page if there is an error
+	    failureFlash : true // allow flash messages
+	}));
 
-// userRouter.get('/Signup', function(req,res){
-// 	res.render('signup.ejs', {message: req.flash('signupMessage')});
-// });
+	// app.get('/Signup', function(req,res){
+	// 	res.render('signup.ejs', {message: req.flash('signupMessage')});
+	// });
 
-userRouter.post('/Signup', passport.authenticate('local-signup', {
-	sucessRedirect: '/profile',
-	failureRedirect: '/Signup',
-	failureFlash: true //allows for flash msg
-}));
+	app.post('/signup', passport.authenticate('local-signup', {
+			sucessRedirect: '/Profile',
+			failureRedirect: '/',
+			failureFlash: true //allows for flash msg
+	}));
 
-userRouter.get('/Profile', isLoggedIn, function(req,res){
-	res.render('profile.ejs',{
-		user: req.user
+	app.route('/Profile')
+		.post(isLoggedIn, function(req,res){
+			res.render('profile.ejs',{
+				user: req.user
+		});
 	});
-});
 
-//logout
-userRouter.get('/Logout', function(req,res){
-	req.logout();
-	res.redirect('/');
-});
+	//logout
+	app.get('/Logout', function(req,res){
+		req.logout();
+		res.redirect('/');
+	});
 
-//middleware to see if user logged in
-function isLoggedIn(req, res){
-	if (req.isAuthenticated())
-		return next();
-	res.redirect('/');
+	//middleware to see if user logged in
+	function isLoggedIn(req, res){
+		if (req.isAuthenticated())
+			return next();
+		res.redirect('/');
+	}
+
 }
+
 
 	// app.get('/Signup', function(req,res){
 	// 	res.render('signup.ejs', {message: req.flash('signupMessage')});
@@ -65,8 +70,6 @@ function isLoggedIn(req, res){
 // 		return next();
 // 	res.redirect('/');
 // }
-
-module.exports = userRouter;
 
 
 
